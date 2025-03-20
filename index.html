@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidsLearn Magic</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: #f0f9ff;
+        }
+        .title-font {
+            font-family: 'Bubblegum Sans', cursive;
+        }
+        .story-card {
+            transition: transform 0.3s ease;
+        }
+        .story-card:hover {
+            transform: scale(1.05);
+        }
+        .filter-preview {
+            transition: all 0.3s ease;
+        }
+        .photo-editor-tools button:hover {
+            transform: scale(1.1);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .bounce-animation {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="min-h-screen">
+        <!-- Navigation -->
+        <nav class="bg-blue-600 p-4 text-white">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl title-font">KidsLearn Magic</h1>
+                <div class="space-x-4">
+                    <button class="hover:bg-blue-700 px-3 py-2 rounded"><i class="bi bi-house-door"></i> Home</button>
+                    <button class="hover:bg-blue-700 px-3 py-2 rounded"><i class="bi bi-person"></i> Parent Dashboard</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container mx-auto p-4">
+            <!-- Photo Editor Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <h2 class="text-2xl title-font mb-4 text-blue-600">Magic Photo Editor</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Image Preview -->
+                    <div class="bg-gray-100 rounded-lg p-4">
+                        <div id="imagePreview" class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                            <i class="bi bi-image text-4xl text-gray-400"></i>
+                        </div>
+                        <input type="file" id="imageInput" accept="image/*" class="hidden">
+                        <button onclick="document.getElementById('imageInput').click()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 w-full">
+                            Upload Image
+                        </button>
+                    </div>
+
+                    <!-- Editor Tools -->
+                    <div class="photo-editor-tools space-y-4">
+                        <!-- Filters -->
+                        <div>
+                            <h3 class="font-bold mb-2">Filters</h3>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button class="bg-blue-100 p-2 rounded hover:bg-blue-200">Sunny</button>
+                                <button class="bg-purple-100 p-2 rounded hover:bg-purple-200">Magic</button>
+                                <button class="bg-yellow-100 p-2 rounded hover:bg-yellow-200">Vintage</button>
+                            </div>
+                        </div>
+
+                        <!-- Basic Tools -->
+                        <div>
+                            <h3 class="font-bold mb-2">Tools</h3>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button class="bg-gray-100 p-2 rounded flex items-center justify-center hover:bg-gray-200">
+                                    <i class="bi bi-brightness"></i> Brightness
+                                </button>
+                                <button class="bg-gray-100 p-2 rounded flex items-center justify-center hover:bg-gray-200">
+                                    <i class="bi bi-contrast"></i> Contrast
+                                </button>
+                                <button class="bg-gray-100 p-2 rounded flex items-center justify-center hover:bg-gray-200">
+                                    <i class="bi bi-crop"></i> Crop
+                                </button>
+                                <button class="bg-gray-100 p-2 rounded flex items-center justify-center hover:bg-gray-200">
+                                    <i class="bi bi-arrow-clockwise"></i> Rotate
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-2">
+                            <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 flex-1">
+                                Save Changes
+                            </button>
+                            <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 flex-1">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Stories Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="story-card bg-white rounded-lg shadow-lg p-4 cursor-pointer">
+                    <div class="bg-yellow-200 h-40 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="bi bi-book text-4xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="title-font text-xl mb-2">The Magic Forest</h3>
+                    <p class="text-gray-600">Join Alex on an adventure through the enchanted forest!</p>
+                </div>
+                <div class="story-card bg-white rounded-lg shadow-lg p-4 cursor-pointer">
+                    <div class="bg-blue-200 h-40 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="bi bi-stars text-4xl text-blue-600"></i>
+                    </div>
+                    <h3 class="title-font text-xl mb-2">Space Explorer</h3>
+                    <p class="text-gray-600">Blast off into space and learn about the planets!</p>
+                </div>
+                <div class="story-card bg-white rounded-lg shadow-lg p-4 cursor-pointer">
+                    <div class="bg-green-200 h-40 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="bi bi-tree text-4xl text-green-600"></i>
+                    </div>
+                    <h3 class="title-font text-xl mb-2">Nature Friends</h3>
+                    <p class="text-gray-600">Discover amazing animals and their habitats!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image handling
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        let currentImage = null;
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'max-w-full max-h-full rounded-lg';
+                    imagePreview.innerHTML = '';
+                    imagePreview.appendChild(img);
+                    currentImage = img;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Filter applications
+        const filters = {
+            'Sunny': 'brightness(120%) saturate(120%)',
+            'Magic': 'hue-rotate(45deg) saturate(150%)',
+            'Vintage': 'sepia(50%) contrast(110%)'
+        };
+
+        document.querySelectorAll('.photo-editor-tools button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (currentImage && filters[this.textContent]) {
+                    currentImage.style.filter = filters[this.textContent];
+                }
+            });
+        });
+
+        // Reset functionality
+        document.querySelector('.bg-red-500').addEventListener('click', function() {
+            if (currentImage) {
+                currentImage.style.filter = 'none';
+            }
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
